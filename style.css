@@ -1,0 +1,45 @@
+body {
+    background-color: #ebfdff;
+}
+
+.continut {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.titlu_pagina {
+    color: #00a9c8;
+}
+
+.container-tabel {
+    background-color: #dafaff;
+    border: 2px solid #00a9c8;
+    border-radius: 10px;
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+table,
+th,
+td {
+    border-collapse: collapse;
+    border: 2px solid #00a9c8;
+    width: 100;
+}
+
+th {
+    border-collapse: collapse;
+    border: 2px;
+    width: 100;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+
+}

@@ -1,125 +1,121 @@
 // clasa Procesor, care defineste una dintre proprietatile clasei Produs Electronic
 class Procesor {
-    frecventa;
-    numar_cores;
-    pret;
+  frecventa;
+  numar_cores;
+  pret;
 
-    constructor(frecventa, numar_cores, pret) {
-        this.frecventa = frecventa;
-        this.numar_cores = numar_cores;
-        this.pret = pret;
+  constructor(frecventa, numar_cores, pret) {
+    this.frecventa = frecventa;
+    this.numar_cores = numar_cores;
+    this.pret = pret;
+  }
+
+  // aceasta functie se gaseste pe clasa Procesor si primeste un argument
+  // de tip comparator si afiseaza in consola daca frecventa depaseste una minima
+  verificareFrecventa = (comparator) => {
+    if (this.frecventa > comparator) {
+      console.log("da, freceventa de " + this.frecventa + " este suficienta.");
+    } else {
+      console.log(
+        "nu, freceventa de " + this.frecventa + " nu este suficienta."
+      );
     }
-
-    // aceasta functie se gaseste pe clasa Procesor si primeste un argument
-    // de tip comparator si afiseaza in consola daca frecventa depaseste una minima
-    verificareFrecventa = (comparator) => {
-        if (this.frecventa > comparator) {
-            console.log(
-                "da, freceventa de " + this.frecventa + " este suficienta."
-            );
-        } else {
-            console.log(
-                "nu, freceventa de " + this.frecventa + " nu este suficienta."
-            );
-        }
-    };
+  };
 }
 
 // clasa parinte
 class ProdusElectronic {
-    nume;
-    ram;
-    stocare;
-    tip_stocare;
-    ecran;
-    // acest procesor este de tipul clasei Procesor
-    procesor;
+  nume;
+  ram;
+  stocare;
+  tip_stocare;
+  ecran;
+  // acest procesor este de tipul clasei Procesor
+  procesor;
 
-    constructor(nume, ram, stocare, tip_stocare, monitor, procesor) {
-        this.nume = nume;
-        this.ram = ram;
-        this.stocare = stocare;
-        this.tip_stocare = tip_stocare;
-        this.ecran = monitor;
-        this.procesor = procesor;
-    }
+  constructor(nume, ram, stocare, tip_stocare, monitor, procesor) {
+    this.nume = nume;
+    this.ram = ram;
+    this.stocare = stocare;
+    this.tip_stocare = tip_stocare;
+    this.ecran = monitor;
+    this.procesor = procesor;
+  }
 
-    // functia de setare pentru procesor
-    setProcesor = function (procesor) {
-        this.procesor = procesor;
-    };
+  // functia de setare pentru procesor
+  setProcesor = function (procesor) {
+    this.procesor = procesor;
+  };
 }
 
 // clasa Telefon este subclasa care extinde clasa Produs Electronic
 class Telefon extends ProdusElectronic {
-    nr_sim;
-    nr_camere;
-    pliabil;
+  nr_sim;
+  nr_camere;
+  pliabil;
 
-    // constructorul acestei clase trimite clasei parinte toate argumentele pe care
-    // le cere constructorul ei
-    constructor(
-        nume,
-        ram,
-        stocare,
-        tip_stocare,
-        monitor,
-        procesor,
-        sim,
-        camere,
-        pliu
-    ) {
-        // functia super permite trimiterea argumentelor catre functia de tip constructor din clasa parinte
-        super(nume, ram, stocare, tip_stocare, monitor, procesor);
-        this.nr_sim = sim;
-        this.nr_camere = camere;
-        this.pliabil = pliu;
-    }
+  // constructorul acestei clase trimite clasei parinte toate argumentele pe care
+  // le cere constructorul ei
+  constructor(
+    nume,
+    ram,
+    stocare,
+    tip_stocare,
+    monitor,
+    procesor,
+    sim,
+    camere,
+    pliu
+  ) {
+    // functia super permite trimiterea argumentelor catre functia de tip constructor din clasa parinte
+    super(nume, ram, stocare, tip_stocare, monitor, procesor);
+    this.nr_sim = sim;
+    this.nr_camere = camere;
+    this.pliabil = pliu;
+  }
 }
 
 // clasa Comparator, functionand ca o librarie pentru comparatii
 class Comparator {
-    comparare = function (primulComputer, alDoileaComputer) {
-        var msg = "";
+  comparare = function (primulComputer, alDoileaComputer) {
+    var msg = "";
 
-        // comparatie care permite verificarea procesoarelor pentru
-        // a afla care are frecventa mai inalta
-        if (
-            primulComputer.procesor.frecventa >
-            alDoileaComputer.procesor.frecventa
-        ) {
-            console.log(
-                "Computer 1 are CPU mai bun: " +
-                    primulComputer.procesor.frecventa +
-                    " GHz " +
-                    primulComputer.procesor.frecventa * 1000 +
-                    "MHz"
-            );
-        } else if (
-            primulComputer.procesor.frecventa <
-            alDoileaComputer.procesor.frecventa
-        ) {
-            console.log(
-                "Computer 2 are CPU mai bun: " +
-                    alDoileaComputer.procesor.frecventa +
-                    " Ghz " +
-                    alDoileaComputer.procesor.frecventa * 1000 +
-                    " MHz"
-            );
-        } else {
-            msg = "CPU-urile sunt identice";
-        }
+    // comparatie care permite verificarea procesoarelor pentru
+    // a afla care are frecventa mai inalta
+    if (
+      primulComputer.procesor.frecventa > alDoileaComputer.procesor.frecventa
+    ) {
+      console.log(
+        "Computer 1 are CPU mai bun: " +
+          primulComputer.procesor.frecventa +
+          " GHz " +
+          primulComputer.procesor.frecventa * 1000 +
+          "MHz"
+      );
+    } else if (
+      primulComputer.procesor.frecventa < alDoileaComputer.procesor.frecventa
+    ) {
+      console.log(
+        "Computer 2 are CPU mai bun: " +
+          alDoileaComputer.procesor.frecventa +
+          " Ghz " +
+          alDoileaComputer.procesor.frecventa * 1000 +
+          " MHz"
+      );
+    } else {
+      msg = "CPU-urile sunt identice";
+    }
 
-        // verificare care ne arata care are capacitatea RAM mai mare
-        if (primulComputer.ram > alDoileaComputer.ram) {
-            msg = "Computer 1";
-        } else if (primulComputer.ram < alDoileaComputer.ram) {
-            msg = "Computer 2";
-        } else {
-            msg = "Niciunul nu";
-        }
-        console.log(msg + " are RAM mai mult.");
-    };
+    // verificare care ne arata care are capacitatea RAM mai mare
+    if (primulComputer.ram > alDoileaComputer.ram) {
+      msg = "Computer 1";
+    } else if (primulComputer.ram < alDoileaComputer.ram) {
+      msg = "Computer 2";
+    } else {
+      msg = "Niciunul nu";
+    }
+    console.log(msg + " are RAM mai mult.");
+  };
 }
 
 // creearea a doua variabile de tip Computer, fara setarea unui procesor
@@ -169,7 +165,7 @@ console.log("ram preluat prin folosiarea sirului de chei", iphone[chei[1]]);
 
 // prin preluarea fiecarei chei pe rand putem sa afisam toate proprietatile obiectului
 chei.forEach((cheie) => {
-    console.log(cheie, iphone[cheie]);
+  console.log(cheie, iphone[cheie]);
 });
 
 const telefoane = [iphone, pixelFold];
@@ -177,44 +173,80 @@ const telefoane = [iphone, pixelFold];
 const tabel = document.getElementById("tabel-telefoane");
 
 const adaugareElementTabel = (telefon) => {
-    var rand_nou = tabel.insertRow();
+  var rand_nou = tabel.insertRow();
 
-    var celula1 = rand_nou.insertCell(0);
-    var celula2 = rand_nou.insertCell(1);
+  var celula1 = rand_nou.insertCell(0);
+  var celula2 = rand_nou.insertCell(1);
 
-    celula1.innerHTML = telefon.nume;
-    celula2.innerHTML = telefon.stocare;
-}
+  celula1.innerHTML = telefon.nume;
+  celula2.innerHTML = telefon.stocare;
+};
 
 const afisare = () => {
-    adaugareElementTabel({ nume: "Nume Telefon", stocare: "Stocare" });
-    telefoane.forEach((telefon) => adaugareElementTabel(telefon));
-}
+  adaugareElementTabel({ nume: "Nume Telefon", stocare: "Stocare" });
+  telefoane.forEach((telefon) => adaugareElementTabel(telefon));
+};
 
 afisare();
 
 document
-    .getElementById("butonAdaugare")
-    .addEventListener("click", (eveniment) => {
-        eveniment.preventDefault();
+  .getElementById("butonAdaugare")
+  .addEventListener("click", (eveniment) => {
+    eveniment.preventDefault();
 
-        var flag = true;
+    var flag = true;
 
-        var nume = document.getElementById("nume").value;
-        var stocare = document.getElementById("stocare").value;
+    var nume = document.getElementById("nume").value;
+    var stocare = document.getElementById("stocare").value;
 
-        const noulTelefon = { nume, stocare };
+    const noulTelefon = { nume, stocare };
 
-        telefoane.forEach((telefon) => {
-            if (telefon.nume === nume) {
-                alert("Telefonul deja exista");
-                flag = false;
-                return;
-            }
-        });
-
-        if (flag === true) {
-            telefoane.push(noulTelefon);
-            adaugareElementTabel(noulTelefon);
-        }
+    telefoane.forEach((telefon) => {
+      if (telefon.nume === nume) {
+        alert("Telefonul deja exista");
+        flag = false;
+        return;
+      }
     });
+
+    if (flag === true) {
+      telefoane.push(noulTelefon);
+      adaugareElementTabel(noulTelefon);
+    }
+  });
+
+document
+  .getElementById("butonEditare")
+  .addEventListener("click", (eveniment) => {
+    eveniment.preventDefault();
+
+    var nume = document.getElementById("nume").value;
+    var stocare = document.getElementById("stocare").value;
+
+    telefoane.forEach((telefon) => {
+      if (telefon.nume === nume) telefon.stocare = stocare;
+    });
+
+    tabel.innerHTML = "";
+    afisare();
+  });
+
+const butonStergere = document.getElementById("butonStergere");
+butonStergere.addEventListener("click", (eveniment) => {
+  eveniment.preventDefault();
+
+  var nume = document.getElementById("nume").value;
+
+  const telefonDeSters = telefoane.filter((telefon) => {
+    return telefon.nume === nume;
+  });
+
+  const index = telefoane.indexOf(telefonDeSters[0]);
+  if (index !== -1) {
+    telefoane.splice(index, 1);
+    tabel.innerHTML = "";
+    afisare();
+  } else {
+    alert("Numele nu a fost gasit in baza de date");
+  }
+});
